@@ -36,19 +36,19 @@ public class StudentDAO implements IntrerfaceDAO<Student> {
         String sql = "SELECT * FROM student where studentId = " + student.getStudentId();
        return (Student)jdbcTemplate.query(sql, new ResultSetExtractor<Student>() {
 
-            @Override
-            public Student extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-                if(resultSet.next()) {
-                    student.setStudentId(resultSet.getInt(1));
-                    student.setFirstName(resultSet.getString(2));
-                    student.setLastName(resultSet.getString(3));
-                    student.setMarkId(resultSet.getInt(4));
-                    student.setGroupId(resultSet.getInt(5));
-                }
-                return student;
+        @Override
+        public Student extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+            if(resultSet.next()) {
+                student.setStudentId(resultSet.getInt(1));
+                student.setFirstName(resultSet.getString(2));
+                student.setLastName(resultSet.getString(3));
+                student.setMarkId(resultSet.getInt(4));
+                student.setGroupId(resultSet.getInt(5));
             }
-        });
-    }
+            return student;
+        }
+    });
+}
 
     @Override
     public Student update(Student student) {
